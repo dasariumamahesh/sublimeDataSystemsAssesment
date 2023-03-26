@@ -88,7 +88,6 @@ function pagination(page, data){
 
         //hard coded to have 5 records per page
         let UserData = data.slice(pageNumber*5-5,pageNumber*5)
-        console.log(data.length)
         let NextPage = (pageNumber*5 >= data.length)? null: ++pageNumber
         return {
             UserData,

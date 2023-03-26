@@ -3,17 +3,6 @@ const express = require('express')
 const app = express()
 app.use(express.json())
 
-
-// module.exports.addCustomer = (req, res, next)=>{
-//     check('first_name').exists()
-//     const errors = validationResult(req)
-//     console.log(errors)
-//     if(!errors.isEmpty()){
-//         res.status(400).json({ errors: errors.array() });
-//     }
-//     next()
-// }
-
 module.exports.addCustomer = [
     check('first_name','first_name is required').exists().isString().withMessage("should be a string"),
     check('last_name','last_name is required').exists().isString().withMessage("should be a string"),
@@ -30,7 +19,7 @@ module.exports.addCustomer = [
 ]
 
 module.exports.checkPageNumber = [
-    check('page').isInt().withMessage("should be an Integer"),
+    check('page').isInt().optional().withMessage("should be an Integer"),
     
     async (req,res,next)=>{
         const errors = validationResult(req)
